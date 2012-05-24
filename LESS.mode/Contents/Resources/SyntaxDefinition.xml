@@ -10,6 +10,7 @@
     </head>
     <states>
         <default id="Base" scope="meta.default">
+        	
             <state id="Inside curly brackets" foldable="yes" indent="yes" scope="meta.block.curly">
                 <begin>
                     <string>{</string>
@@ -18,7 +19,7 @@
                 <end>
                     <regex>}</regex>
                 </end>
-                <keywords id="CSS Keywords" useforautocomplete="yes" casesensitive="no" scope="style.property.name">
+                <keywords id="LESS Keywords" useforautocomplete="yes" casesensitive="no" scope="style.property.name">
                     <regex>(?&lt;![\d\w.\-#])(_background)</regex>
                     <regex>(?&lt;![\d\w.\-#])(_filter)</regex>
                     <regex>(?&lt;![\d\w.\-#])(-webkit(?:-\w+)+)</regex>
@@ -187,7 +188,13 @@
                     <keywords id="!important" useforautocomplete="no" scope="meta.important">
                         <regex>(!\s*important)</regex>
                     </keywords>
-                    <keywords id="CSS Attributes" useforautocomplete="yes" casesensitive="no" scope="style.value.keyword">
+                    <keywords id="LESS Variables" useforautcomplete="no" scope="language.variable">
+						<regex>(@[\w\-]+\b)</regex>
+					</keywords>
+					<keywords id="LESS Operators" useforautocomplete="no" scope="style.value.keyword">
+						<regex>(\+|\-|\/|\*)</regex>
+					</keywords>
+                    <keywords id="LESS Attributes" useforautocomplete="yes" casesensitive="no" scope="style.value.keyword">
                     	<regex>(-webkit(?:-\w+)+)</regex>
                     	<regex>(-moz(?:-\w+)+)</regex>
                     	<regex>(-ms(?:-\w+)+)</regex>
@@ -731,12 +738,13 @@
 						<string>yellow</string>
 						<string>yellowgreen</string>
                     </keywords>
-                    <keywords id="CSS Digits" useforautocomplete="yes" scope="style.value.numeric">
+                    <keywords id="LESS Digits" useforautocomplete="yes" scope="style.value.numeric">
                         <regex>(?&lt;![#\d\w-])(-?[\d]+[ \t]*(?:px|pt|em|ex|cm|in|mm|pc|s|ms|Hz|kHz|%|deg|rad|grad|turn)?)</regex>
                     </keywords>
-                    <keywords id="CSS Colors" useforautocomplete="yes" scope="style.value.color.rgb-value">
+                    <keywords id="LESS Colors" useforautocomplete="yes" scope="style.value.color.rgb-value">
                         <regex>(#[\da-fA-F]{3,6})</regex>
                     </keywords>
+                    
                     <state-link state="AutodocComment"/>
                     <state-link state="Comment"/>
                     <state-link state="String"/>
@@ -750,17 +758,53 @@
                 --> 
                 <import />
             </state>
-            
+            <keywords id="LESS Mixins" useforautocomplete="no" scope="support">
+				<regex>(.[\$A-Za-z0-9_-]+[ \t]*)\(</regex>
+				<state id="LESS Mixins state" scope="meta.block.attribute">
+                    <begin>
+                        <string>\(</string>
+                        <autoend>\)</autoend>
+                    </begin>
+                    <end>
+                        <regex>\)</regex>
+                    </end>
+                    <keywords id="LESS Mixins Attributes" useforautocomplete="yes" casesensitive="no" scope="style.value.keyword">
+                    	 <regex>\S</regex>
+                    </keywords>
+                </state>
+            </keywords>
+            <state id="LESS Variables" useforautcomplete="no" scope="language.variable">
+            	<begin>
+            		<string>@</string>
+            	</begin>
+            	<end>
+					<regex>[\w\-]+\b</regex>
+				</end>
+			</state>
+			<!--
+			<state id="LESS Functions" useforautocomplete="no" scope="language.function.js">
+				<begin>
+					<string>lighten</string>
+					<string>darken</string>
+					<string>hue</string>
+					<string>saturation</string>
+					<autoend><regex>\(</regex></autoend>
+            	</begin>
+            	<end>
+            		<regex>\(</regex>
+            	</end>
+            </state>
+			-->
             <state id="Rules" scope="style.at-rule">
                 <begin>
-				    <string>@</string>
+				    <string>@media</string>
+				    <string>@import</string>
 					<autoend><regex>\s</regex></autoend>
                 </begin>
                 <end>
                     <regex>\s|[.\r\n](?=\{)</regex>
                 </end>
             </state>
-            
             <state id="AutodocComment" type="comment" scope="style.comment.block.documentation">
                 <begin>
                     <string>/\*"</string>
@@ -779,6 +823,11 @@
                 <end>
                     <regex>\*/</regex>
                 </end>
+                <import mode="Base" state="EmailAndURLContainerState" keywords-only="yes"/>
+            </state>
+            <state id="SingleComment" type="comment" scope="style.comment.block">
+                <begin><regex>//</regex></begin>
+                <end><regex>[\n\r]</regex></end>
                 <import mode="Base" state="EmailAndURLContainerState" keywords-only="yes"/>
             </state>
             <state id="String" type="string" scope="style.value.string.double">
