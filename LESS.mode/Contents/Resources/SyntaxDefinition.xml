@@ -760,18 +760,6 @@
             </state>
             <keywords id="LESS Mixins" useforautocomplete="no" scope="support">
 				<regex>(.[\$A-Za-z0-9_-]+[ \t]*)\(</regex>
-				<state id="LESS Mixins state" scope="meta.block.attribute">
-                    <begin>
-                        <string>\(</string>
-                        <autoend>\)</autoend>
-                    </begin>
-                    <end>
-                        <regex>\)</regex>
-                    </end>
-                    <keywords id="LESS Mixins Attributes" useforautocomplete="yes" casesensitive="no" scope="style.value.keyword">
-                    	 <regex>\S</regex>
-                    </keywords>
-                </state>
             </keywords>
             <state id="LESS Variables" useforautcomplete="no" scope="language.variable">
             	<begin>
@@ -782,19 +770,6 @@
 				</end>
 			</state>
 			<!--
-			<state id="LESS Functions" useforautocomplete="no" scope="language.function.js">
-				<begin>
-					<string>lighten</string>
-					<string>darken</string>
-					<string>hue</string>
-					<string>saturation</string>
-					<autoend><regex>\(</regex></autoend>
-            	</begin>
-            	<end>
-            		<regex>\(</regex>
-            	</end>
-            </state>
-			-->
             <state id="Rules" scope="style.at-rule">
                 <begin>
 				    <string>@media</string>
@@ -805,6 +780,7 @@
                     <regex>\s|[.\r\n](?=\{)</regex>
                 </end>
             </state>
+			-->
             <state id="AutodocComment" type="comment" scope="style.comment.block.documentation">
                 <begin>
                     <string>/\*"</string>
