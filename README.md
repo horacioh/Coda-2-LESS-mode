@@ -1,5 +1,5 @@
-Coda-2-LESS.mode
-================
+Coda 2 - LESS.mode
+==================
 
 Sytax Highlighting for LESS in Coda 2 (based on the CSS.mode supplied with Coda 2)
 
