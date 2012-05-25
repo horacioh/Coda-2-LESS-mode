@@ -72,25 +72,25 @@
                     <regex>}</regex>
                 </end>
                 
-                	<state-link state="AutodocComment" mode="CSS" />
-					<state-link state="Comment" mode="CSS" />
-					<state-link state="SingleComment" />
-					<state-link state="SingleString" mode="CSS" />
+            	<state-link state="AutodocComment" mode="CSS" />
+				<state-link state="Comment" mode="CSS" />
+				<state-link state="SingleComment" />
+				<state-link state="SingleString" mode="CSS" />
+				
+            	<state id="String" type="string" scope="style.value.string.double">
+					<begin>
+						<string>"</string>
+					</begin>
+					<end>
+						<regex>(((?&lt;!\\)(\\\\)*)|^)"</regex>
+					</end>
 					
-                	<state id="String" type="string" scope="style.value.string.double">
-						<begin>
-							<string>"</string>
-						</begin>
-						<end>
-							<regex>(((?&lt;!\\)(\\\\)*)|^)"</regex>
-						</end>
+					<keywords id="Variables" useforautocomplete="no" scope="language.variable.less">
+						<regex>(@[\w\-]+\b)</regex>
+					</keywords>						
+				</state>
 						
-						<keywords id="Variables" useforautocomplete="no" scope="language.variable.less">
-							<regex>(@[\w\-]+\b)</regex>
-						</keywords>						
-					</state>
-							
-       				<import keywords-only="yes" />
+   				<import keywords-only="yes" />
        				
        			<import mode="CSS" state="Inside curly brackets" keywords-only="yes" />
        			
@@ -125,7 +125,8 @@
                     
                     <import mode="CSS" state="Attribute state" />           			
            			<import keywords-only="yes" />
-           			
+           			<import mode="CSS" state="Inside curly brackets" keywords-only="yes" />
+           			      			
                 </state>
 				
 				<import keywords-only="yes" />
