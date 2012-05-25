@@ -9,7 +9,7 @@
     
     <!-- CODA - added support for comments after delarations before { -->
     <symbol id="Tags" image="SymbolT">
-        <regex>(?&lt;=[\n\r\}]|^)[\t ]*(?:/\*.*\*/\s*)*([\w\*][\w\d\s,\-_\*>:\(\)\+\[\]="~\$\^#\. ]*)(?=(\s*\{)|(\s*/\*.*\*/\s*\{))</regex>
+        <regex>(?&lt;=[\n\r]|^)[\t ]*([:\w\*][\w\d\s,\-_\*>:\(\)\+\[\]="~\$\^#\. ]*)(?=(\s*\{)|(\s*/\*.*\*/\s*\{))</regex>
         <postprocess>
             <find>[\n\r]</find>
             <replace> </replace>
@@ -21,7 +21,7 @@
     </symbol>
     
     <symbol id="Classes" image="SymbolC">
-        <regex>(?&lt;=[\n\r\}]|^)[\t ]*(?:/\*.*\*/\s*)*([.:][\w\d\s,\-_\*>:\(\)\+\[\]="~\$\^#\. ]*)(?=(\s*\{)|(\s*/\*.*\*/\s*\{))</regex>
+        <regex>(?&lt;=[\n\r]|^)[\t ]*(\.[\w\d\s,\-_\*>:\(\)\+\[\]="~\$\^#\. ]*)(?=(\s*\{)|(\s*/\*.*\*/\s*\{))</regex>
         <postprocess>
             <find>[\n\r]</find>
             <replace> </replace>
@@ -33,7 +33,7 @@
     </symbol>
     
     <symbol id="IDs" image="SymbolID">
-        <regex>(?&lt;=[\n\r\}]|^)[\t ]*(?:/\*.*\*/\s*)*(#[\w\d\s,\-_\*>:\(\)\+\[\]="~\$\^#\. ]*)(?=(\s*\{)|(\s*/\*.*\*/\s*\{))</regex>
+        <regex>(?&lt;=[\n\r]|^)[\t ]*(#[\w\d\s,\-_\*>:\(\)\+\[\]="~\$\^#\. ]*)(?=(\s*\{)|(\s*/\*.*\*/\s*\{))</regex>
         <postprocess>
             <find>[\n\r]</find>
             <replace> </replace>
@@ -43,9 +43,9 @@
             <replace></replace>
         </postprocess>
     </symbol>
-    
+
     <symbol id="Rules" image="SymbolAt">
-        <regex>(?&lt;=[\n\r\}]|^)[\t ]*(?:/\*.*\*/\s*)*(@[\w\d\s,\-_\*>:\(\)\+\[\]="~\$\^#\. ]*)(?=(\s*\{)|(\s*/\*.*\*/\s*\{))</regex>
+        <regex>(?&lt;=[\n\r]|^)[\t ]*((?i)@(media|import))\s+([\w\d\s,\-_\*>:\(\)\+\[\]="~\$\^#\. ]*)(?=(\s*\{)|(\s*/\*.*\*/\s*\{))</regex>
         <postprocess>
             <find>[\n\r]</find>
             <replace> </replace>
@@ -60,5 +60,9 @@
     <symbol id="Pragma marks" font-weight="normal" font-style="normal" image="SymbolMark" indentation="0" ignoreblocks="no" show-in-comments="yes">
         <regex>/\* !(.+) \*/</regex>
     </symbol>
+    
+    <symbol id="language.variable.less" hidden="yes" useforautocomplete="yes">
+		<regex>(\@[\w\d\-]+)</regex>
+	</symbol>
     
 </symbols>

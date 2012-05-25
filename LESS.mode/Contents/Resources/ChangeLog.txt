@@ -1,7 +1,0 @@
-Changes with Version 1.1
-    
-    *) Nested elements
-
-Changes with Version 1.0
-    
-    *) Added Mixins, Variables and Single Comments
